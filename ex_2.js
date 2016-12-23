@@ -7,9 +7,7 @@
 //[3, 4, 1] -> 8
 function addNumbers(array) {
   return array
-    .reduce(function (a, b) {
-      return a + b;
-    });
+    .reduce((a, b) => a + b);
 };
 
 //Write a function that tells you whether an array contains a given
@@ -37,10 +35,7 @@ function highestNumber(array) {
 //eg: ['snakes', 'baby'] -> ['snakess', 'babys']
 function pluralize(array) {
   return array
-    .map(function (string) {
-      return string
-        .concat('s');
-    });
+    .map((string) => string.concat('s'));
 };
 
 exports.addNumbers = addNumbers;

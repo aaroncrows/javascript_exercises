@@ -38,8 +38,8 @@ violet.feed() -> {
 */
 
 Sloth.prototype.feed = function() {
-  var min = Math.ceil(1);
-  var max = Math.floor(5);
+  const min = Math.ceil(1);
+  const max = Math.floor(5);
 
   this.feedings
     .push(Math.floor(Math.random() * (max - min + 1)) + min);
@@ -56,9 +56,7 @@ Sloth.prototype.feed = function() {
 
 Sloth.prototype.calculateTotalFed = function() {
   this.totalFed = this.feedings
-    .reduce(function (a, b) {
-      return a + b;
-    });
+    .reduce((a, b) => a + b);
 };
 
 //Now write a constructor for the ranch. It needs a property 'grove' which is an array where we keep all of our sloth instances.
@@ -95,9 +93,7 @@ SlothRanch.prototype.makeBabySloth = function(name, favoriteTree) {
 
 SlothRanch.prototype.feedSloths = function() {
   this.grove
-    .forEach(function (sloth) {
-      return sloth.feed();
-    });
+    .forEach((sloth) => sloth.feed());
 };
 
 //We need to be able to track down which sloths are in which tree. To do that we want to write a function that takes in a string of a type of tree and then returns an array of the names of ALL of the sloths that have that tree as their favoriteTree
@@ -107,12 +103,8 @@ SlothRanch.prototype.feedSloths = function() {
 
 SlothRanch.prototype.findSloths = function(tree) {
   return this.grove
-    .filter(function (sloth) {
-      return sloth.favoriteTree === tree;
-    })
-    .map(function (sloth) {
-      return sloth.name;
-    });
+    .filter((sloth) => sloth.favoriteTree === tree)
+    .map((sloth) => sloth.name);
 };
 
 //Finally we want to get the total fed per day for all of our sloths. For our purposes a day is one index in the feedings array. So we want the total of each index across all feedings arrays for all of our sloths as an array.
@@ -130,15 +122,11 @@ ranchoSlotho.fedPerDay() -> [3, 11, 10]*/
 
 SlothRanch.prototype.fedPerDay = function() {
   return this.grove
-    .map(function (sloth) {
-      return sloth.feedings;
-    })
-    .reduce(function (feedingsA, feedingsB) {
-      return feedingsA
-        .map(function (feeding, index) {
-          return feeding + feedingsB[index];
-        });
-    });
+    .map((sloth) => sloth.feedings)
+    .reduce((feedingsA, feedingsB) => (
+      feedingsA
+        .map((feeding, index) => feeding + feedingsB[index]);
+    ));
 };
 
 exports.Sloth = Sloth;

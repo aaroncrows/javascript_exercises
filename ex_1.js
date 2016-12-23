@@ -40,12 +40,12 @@ function reverseString(string) {
 function capitalizeEach(string) {
   return string
     .split(' ')
-    .map(function (word) {
-      return word
+    .map((word) => (
+      word
         .charAt(0)
         .toUpperCase()
         .concat(word.slice(1));
-    })
+    ))
     .join(' ');
 }
 
