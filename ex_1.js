@@ -6,7 +6,9 @@
 //eg: 'my', 'Bud' -> 'MYbud'
 
 function capHalf(firstString, secondString) {
-  //your code here!
+  return firstString
+    .toUpperCase()
+    .concat(secondString.toLowerCase());
 }
 
 //Write a function that takes a name and returns only the first initial capitalized with a period after it
@@ -14,7 +16,10 @@ function capHalf(firstString, secondString) {
 //eg: 'sailor moon' -> 'S.'
 
 function mainInitial(name) {
-  //your code here!
+  return name
+    .charAt(0)
+    .toUpperCase()
+    .concat('.');
 }
 
 //Write a function that reverses a string
@@ -22,7 +27,10 @@ function mainInitial(name) {
 //eg: 'bat' -> 'tab'
 
 function reverseString(string) {
-  //your code here!
+  return string
+    .split('')
+    .reverse()
+    .join('');
 }
 
 //Write a function that capitalizes the first letter of every word
@@ -30,7 +38,15 @@ function reverseString(string) {
 //eg: 'whatever sloths are the best' ->  'Whatever Sloths Are The Best'
 
 function capitalizeEach(string) {
-  //your code here!
+  return string
+    .split(' ')
+    .map(function (word) {
+      return word
+        .charAt(0)
+        .toUpperCase()
+        .concat(word.slice(1));
+    })
+    .join(' ');
 }
 
 
