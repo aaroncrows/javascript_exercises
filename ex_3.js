@@ -125,7 +125,7 @@ SlothRanch.prototype.fedPerDay = function() {
     .map((sloth) => sloth.feedings)
     .reduce((feedingsA, feedingsB) => (
       feedingsA
-        .map((feeding, index) => feeding + feedingsB[index]);
+        .map((feeding, index) => feeding + feedingsB[index])
     ));
 };
 

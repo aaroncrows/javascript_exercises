@@ -44,7 +44,7 @@ function capitalizeEach(string) {
       word
         .charAt(0)
         .toUpperCase()
-        .concat(word.slice(1));
+        .concat(word.slice(1))
     ))
     .join(' ');
 }
