@@ -14,8 +14,11 @@
 }*/
 
 function Sloth(name, favoriteTree) {
-  //your code here!
-};
+    this.name = name;
+    this.favoriteTree = favoriteTree;
+    this.feedings = [];
+    this.totalFed = 0;
+}
 
 //Our sloth needs a function to feed it. We want to track the size of the feedings throughout the week so we're going to keep them in an array. We'll simulate the amount fed with a random number from 0-5. Write a function 'feed' that adds a feeding to the feedings array.
 
@@ -35,7 +38,10 @@ violet.feed() -> {
 */
 
 Sloth.prototype.feed = function() {
-  //your code here!
+    const max = Math.floor(5);
+    const min = Math.ceil(1);
+
+    this.feedings.push(Math.floor(Math.random() * (max - min + 1)) + min);
 };
 
 //It also needs a function to calculate how much it's been fed. Write a function 'calculateTotalFed'that adds up all of the numbers in the feedings array and sets the result to the property 'totalFed'.
@@ -48,7 +54,7 @@ Sloth.prototype.feed = function() {
 }*/
 
 Sloth.prototype.calculateTotalFed = function() {
-  //your code here!
+    this.totalFed = this.feedings.reduce((a,b) => a + b );
 };
 
 //Now write a constructor for the ranch. It needs a property 'grove' which is an array where we keep all of our sloth instances.
@@ -58,7 +64,7 @@ grove: []
 }*/
 
 function SlothRanch() {
-  //your code here!
+    this.grove = [];
 }
 
 //Our ranch needs a function that creates a new sloth and adds it to the grove. You'll need to use your sloth constructor!
@@ -70,7 +76,7 @@ function SlothRanch() {
 } */
 
 SlothRanch.prototype.makeBabySloth = function(name, favoriteTree) {
-  //your code here!
+    this.grove.push(new Sloth(name, favoriteTree));
 };
 
 //We also need to be able to feed them. Add a function to the prototype that feeds all the sloths in the grove
@@ -83,7 +89,7 @@ SlothRanch.prototype.makeBabySloth = function(name, favoriteTree) {
 }*/
 
 SlothRanch.prototype.feedSloths = function() {
-  //your code here!
+    this.grove.map(ele => ele.feed());
 };
 
 //We need to be able to track down which sloths are in which tree. To do that we want to write a function that takes in a string of a type of tree and then returns an array of the names of ALL of the sloths that have that tree as their favoriteTree
@@ -92,7 +98,13 @@ SlothRanch.prototype.feedSloths = function() {
 //eg: ranchoSlotho.findSloths('mangrove') -> ['Violet']
 
 SlothRanch.prototype.findSloths = function(tree) {
-  //your code here!
+    const name = function(acc, curr) {
+        if (curr.favoriteTree === tree) {
+            acc.push(curr.name);
+        }
+        return acc;
+    };
+    return this.grove.reduce(name, []);
 };
 
 //Finally we want to get the total fed per day for all of our sloths. For our purposes a day is one index in the feedings array. So we want the total of each index across all feedings arrays for all of our sloths as an array.
@@ -109,7 +121,14 @@ then:
 ranchoSlotho.fedPerDay() -> [3, 11, 10]*/
 
 SlothRanch.prototype.fedPerDay = function() {
-  //your code here!
+    let array = [];
+    for (let i = 0; i < this.grove[0].feedings.length; i++) {
+        array.push(this.grove[0].feedings[i]);
+        for (let j = 1; j < this.grove.length; j++) {
+            array.push(array[i] += this.grove[j].feedings[i]);
+        }
+    }
+    return array;
 };
 
 exports.Sloth = Sloth;
