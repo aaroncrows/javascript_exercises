@@ -122,10 +122,12 @@ ranchoSlotho.fedPerDay() -> [3, 11, 10]*/
 
 SlothRanch.prototype.fedPerDay = function() {
     let array = [];
-    for (let i = 0; i < this.grove[0].feedings.length; i++) {
-        array.push(this.grove[0].feedings[i]);
-        for (let j = 1; j < this.grove.length; j++) {
-            array.push(array[i] += this.grove[j].feedings[i]);
+    for (let i = 0; i < this.grove.length; i++) {
+        for (let j = 0; j < this.grove[i].feedings.length; j++) {
+            if(i === 0) { //initialze 0 on first pass
+                array[j] = 0;
+            }
+            array[j] += this.grove[i].feedings[j];
         }
     }
     return array;
