@@ -10,7 +10,7 @@ function capHalf(firstString, secondString) {
   var capitalize = firstString.toUpperCase();
   var lowerCase = secondString.toLowerCase();
 
-  return firstString + secondString;
+  return capitalize + lowerCase;
 }
 
 //Write a function that takes a name and returns only the first initial capitalized with a period after it
@@ -33,7 +33,7 @@ function reverseString(string) {
   //your code here!
   var splitString = string.split('');
   var reverseSplitString = splitString.reverse();
-  var joinReversedString = reverseString.join();
+  var joinReversedString = reverseSplitString.join('');
 
   return joinReversedString;
 }
@@ -44,14 +44,16 @@ function reverseString(string) {
 
 function capitalizeEach(string) {
   //your code here!
-  var splitString = string.toLowerCase().split(' ');
-  for (var i=0; i < splitString.length; i++) {
-    splitString[1] = splitString[1].charAt(0).toUpperCase() + splitString.substring(1);
-  }
-  return splitString.join(' ');
+  var phrase = string.split(' ');
+  var newSentence = [];
+  phrase.forEach(function(word) {
+    word = word.replace(word[0], word[0].toUpperCase());
+    newSentence.push(word);
+  })
+  return newSentence.join(' ');
 }
 
 exports.capHalf = capHalf;
 exports.mainInitial = mainInitial;
 exports.reverseString = reverseString;
-exports.capitalizeEach = capitalizeEacg;
+exports.capitalizeEach = capitalizeEach;
