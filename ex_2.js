@@ -33,7 +33,7 @@ function pluralize(array) {
   //your code here
 };
 
-exports.addNumbers = addNumbers;
-exports.hasItem = hasItem;
-exports.highestNumber = highestNumber;
-exports.pluralize = pluralize;
+export.addNumbers = addNumbers;
+export.hasItem = hasItem;
+export.highestNumber = highestNumber;
+export.pluralize = pluralize;

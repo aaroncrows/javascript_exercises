@@ -112,5 +112,5 @@ SlothRanch.prototype.fedPerDay = function() {
   //your code here!
 };
 
-exports.Sloth = Sloth;
-exports.SlothRanch = SlothRanch;
+export.Sloth = Sloth;
+export.SlothRanch = SlothRanch;
